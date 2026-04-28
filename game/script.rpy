@@ -93,7 +93,7 @@ label start:
 
     menu:
         "WHAT SHOULD I DO???"
-        "(STAY SCILENT)":
+        "(STAY SILENT)":
             jump goodending
         "(Lie)":
             jump fight
