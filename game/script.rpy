@@ -4,12 +4,29 @@
 # name of the character.
 
 define m = Character("MoM", color ="#EE4B2B")
-define M = Character("ME")
+
 define s = Character("Sharma's SON", color = "#964B00")
+define pov = Character("[player_name]")
+
+init python:
+    import random
+    bgm_tracks = [
+        "audio1.mp3",
+        "audio2.mp3",
+        
+    ]
+
+
 
 # The game starts here.
 
 label start:
+
+    
+    $ selected_bgm = random.choice(bgm_tracks)
+    play music selected_bgm fadein 1.0 loop volume 0.5
+
+
     image scene1 = "images/scene 1.png"
     image scene2 = "images/scene 2.png"
     image scene3 = "images/scene 3.png"
@@ -24,6 +41,16 @@ label start:
     image scene12 = "images/scene 12.png"
     image scene13 = "images/scene 13.png"
     image good = "images/goodending.png"
+
+    show scene12
+    $player_name = renpy.input("WHAT'S YOUR NAME KIDOO?", length=15)
+    $player_name = player_name.strip()
+
+    if not player_name:
+        $ player_name = "IDIOT"
+
+   
+
     
 
     # Show a background. This uses a placeholder by default, but you can
@@ -49,13 +76,13 @@ label start:
     m "(turns off the fan for no particular reason)"
     show scene3
 
-    M '"z..zzz"'
+    pov '"z..zzz"'
     show scene4
-    M '"z..zzz"'
-    M '"z..zzz.." (feels the burn of 48 degrees allover)'
+    pov '"z..zzz"'
+    pov '"z..zzz.." (feels the burn of 48 degrees allover)'
     show scene5
-    M 'hey! who turned off the GODDAMN FANNNN!'
-    M "(bro thinks he scary)"
+    pov 'hey! who turned off the GODDAMN FANNNN!'
+    "(bro thinks he scary)"
     show scene6
     m "YOUR MOTHER!! (grabs me by the hair and throws me out of bed.)"
     m "You realize what time it is!??"
@@ -73,21 +100,22 @@ label start:
 
 label fight:
     
-    M "...."
-    M "MoM he smokes in the park at 5 am with the Milk man."
-    M "(lying hard to sabe my azzz)"
+    pov "...."
+    pov "MoM he smokes in the park at 5 am with the Milk man."
+    pov "(lying hard to sabe my azzz)"
     m "hey! how dare you talk to your mom like that!!"
     show scene7
     m "(she reaches for the broom.)"
     show scene8
-    M "(I reach for the captian america shield.)"
-    M "(My life depends on it \"literally\")"
+    pov "(I reach for the captian america shield.)"
+    pov "(My life depends on it \"literally\")"
     show scene9
-    M "(Thinking I am worthy!)"
+    pov "(Thinking I am worthy!)"
     show scene10
-    M "Avengers!"
+    play sound 'audio/avenger3.mp3' volume 2
+    pov "Avengers!"
     show scene11
-    M "Assemble"
+    pov "Assemble"
     show scene12
 
     "(Meanwhile in the park)"
